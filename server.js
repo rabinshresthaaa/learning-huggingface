@@ -2,6 +2,7 @@
 import express from "express";
 import { textSummarization } from './textSummarization.js';
 import { chatCompletion } from './chatCompletion.js';
+import { fetchImage } from './fetchImage.js'
 
 const app = express();
 
@@ -26,6 +27,17 @@ app.get("/chat", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Chat completion failed" });
+  }
+})
+
+app.get("/image", async (req, res) => {
+  try {
+    const imageBuffer = await fetchImage();
+    res.setHeader("Content-Type", "image/png");
+    res.send(imageBuffer);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Image generation failed" });
   }
 })
 
