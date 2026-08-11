@@ -7,7 +7,7 @@ const app = express();
 app.use(express.static("public")); // serve your frontend files
 
 app.get("/chat", async (req, res) => {
-     try {
+  try {
     const text = await textSummarization();
     res.json({ text });
     console.log(text);
@@ -17,4 +17,4 @@ app.get("/chat", async (req, res) => {
   }
 })
 
-app.listen(3000, () => console.log("Server running on port 3000"));
+app.listen(3000, () => console.log("Server running on localhost:3000"));
