@@ -32,6 +32,9 @@ async function detectAndDrawObjects() {
     
     // Draw Detected Objects
     status.textContent = 'Drawing...'
+    detectedObjects.forEach(object => {
+        drawObjectBox(object)
+    })
     
     status.textContent = 'Done!'
 }
